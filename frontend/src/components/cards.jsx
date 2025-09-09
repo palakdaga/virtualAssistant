@@ -1,0 +1,23 @@
+import React from "react";
+import { LuImagePlus } from "react-icons/lu";
+import { UserDataContext } from "../context/userContext.jsx";
+
+function Card({image}){
+    const {serverURL,userData, setUserData,frontendImage, setFrontendImage,
+                backendImage, setBackendImage, selectedImage, setSelectedImage} = React.useContext(UserDataContext);
+    return(
+        <div className={`w-[70px] h-[140px] lg:w-[150px] lg:h-[250px] bg-[#030326] 
+        border-2 border-[blue] hover:border-white rounded-2xl overflow-hidden shadow-lg shadow-black relative 
+        cursor-pointer hover:scale-[1.05] hover:shadow-blue-950 transition-all duration-300 ease-in-out 
+        ${selectedImage === image ? "border-4 border-white shadow-blue-950" : null}`} 
+        onClick={() => {
+            setSelectedImage(image)
+            setBackendImage(null);
+            setFrontendImage(null);
+        }}>
+            <img src={image} className='h-full object-cover'/>
+        
+        </div>
+    )
+}
+export default Card
